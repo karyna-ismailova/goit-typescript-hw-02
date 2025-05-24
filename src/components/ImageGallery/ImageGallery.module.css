@@ -1,0 +1,16 @@
+.gallery {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.galleryItem {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+}
