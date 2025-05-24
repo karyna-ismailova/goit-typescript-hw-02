@@ -10,21 +10,21 @@ import { fetchImages } from "../services/api";
 import s from "./App.module.css";
 
 const App = () => {
-  const [images, setImages] = useState([]);
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [totalPages, setTotalPages] = useState(1);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalImage, setModalImage] = useState(null);
-  const [notFound, setNotFound] = useState(false);
+  const [images, setImages] = useState<any[]>([]);
+  const [query, setQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [modalImage, setModalImage] = useState<any>(null);
+  const [notFound, setNotFound] = useState<boolean>(false);
 
   const onLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const openModal = (image) => {
+  const openModal = (image: any) => {
     setModalImage(image);
     setIsModalOpen(true);
   };
@@ -50,7 +50,7 @@ const App = () => {
         // console.log(data);
         setImages((prev) => [...prev, ...data.results]);
         setTotalPages(data.total_pages);
-      } catch (error) {
+      } catch (error: any) {
         console.log(error);
         if (error.code !== "ERR_CANCELED") {
           setIsError(true);
@@ -67,7 +67,7 @@ const App = () => {
     };
   }, [query, page]);
 
-  const handleChangeQuery = (newQuery) => {
+  const handleChangeQuery = (newQuery: string) => {
     // toast.success(`Query changed to ${newQuery}`);
     setQuery(newQuery);
     setImages([]);

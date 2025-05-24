@@ -2,11 +2,18 @@ import { Field, Form, Formik } from "formik";
 import toast from "react-hot-toast";
 import s from "./SearchBar.module.css";
 
-const SearchBar = ({ handleChangeQuery }) => {
+type Props = {
+  handleChangeQuery: (query: string) => void;
+};
+type SubmitValues = {
+  query: string;
+};
+
+const SearchBar = ({ handleChangeQuery }: Props) => {
   const initialValues = {
     query: "",
   };
-  const handleSubmit = (values, options) => {
+  const handleSubmit = (values: SubmitValues, options: any) => {
     console.log(values);
     const trimmedQuery = values.query.trim();
     if (!trimmedQuery) {
@@ -18,25 +25,6 @@ const SearchBar = ({ handleChangeQuery }) => {
     options.resetForm();
   };
   return (
-    // <header>
-    //   <form
-    //     className={s.wrapper}
-    //     onSubmit={handleSubmit}
-    //     initialValues={initialValues}
-    //   >
-    //     <input
-    //       className={s.input}
-    //       type="text"
-    //       autocomplete="off"
-    //       autofocus
-    //       placeholder="Search images and photos"
-    //     />
-    //     <button className={s.button} type="submit">
-    //       Search
-    //     </button>
-    //   </form>
-    // </header>
-
     <header className={s.wrapper}>
       <form></form>
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>

@@ -1,6 +1,11 @@
 import s from "./ImageCard.module.css";
 
-const ImageCard = ({ image, onImageClick }) => {
+type ImageCardProps = {
+  image: any;
+  onImageClick: (image: any) => void;
+};
+
+const ImageCard = ({ image, onImageClick }: ImageCardProps) => {
   return (
     <div className={s.galleryItem}>
       <li onClick={() => onImageClick(image)} className={s.imageWrapper}>

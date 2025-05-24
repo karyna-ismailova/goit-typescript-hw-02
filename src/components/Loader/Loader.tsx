@@ -1,6 +1,10 @@
 import { ClipLoader } from "react-spinners";
 
-const Loader = ({ isLoading }) => {
+type Props = {
+  isLoading: boolean;
+};
+
+const Loader = ({ isLoading }: Props) => {
   return (
     <div style={{ textAlign: "center", marginTop: "20px" }}>
       <ClipLoader color="rgb(255, 222, 241)" loading={isLoading} size={50} />
